@@ -1,42 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portifolio</title>
-    <link rel="stylesheet" href="./style/pagina.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seu Nome — Portfólio</title>
+  <meta name="description" content="Portfólio de Seu Nome — desenvolvedor(a) focado(a) em interfaces simples, rápidas e bem pensadas.">
+  <meta name="theme-color" content="#f3f1ec">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Aplica o tema salvo antes de renderizar, evitando "piscar" -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-theme", saved || (prefersDark ? "dark" : "light"));
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">Sobre mim</a></li>
-                <li><a href="">Portifólios</a></li>
-                <li><a href="">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="home">
-            <h1>Bem-vindo ao meu portfólio</h1>
-            <p>Sou uma estudante do 3º semestre de Ciência da Computação, com interesse em desenvolvimento web e programação. Estou sempre buscando novos desafios e oportunidades para aprimorar minhas habilidades técnicas.</p>
-            <p>Com conhecimentos em: 
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
 
-                <ul id="tecnologias">
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>GitHub</li>
-                    <li>GitHub Pages</li>
-                    <li>GitHub Actions</li>
-                </ul>
-            </p>
-            <img src="https://blog.formacao.dev/content/images/2024/01/GitHub.png" alt="Profile Picture">
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 Maria Fernanda Venda - Todos os direitos reservados</p>
-    </footer>
+  <header class="site-header">
+    <a class="brand" href="#topo" aria-label="Início">SN<span class="dot">.</span></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema claro/escuro">
+      <span class="theme-toggle__icon" aria-hidden="true"></span>
+    </button>
+  </header>
+
+  <main id="conteudo">
+    <!-- HERO -->
+    <section class="hero" id="topo">
+      <p class="eyebrow reveal">Portfólio — <span id="year">2026</span></p>
+      <h1 class="hero__title reveal">
+        Olá, eu sou<br>
+        <em>Seu Nome</em><span class="dot">.</span>
+      </h1>
+      <p class="hero__lead reveal">
+        Desenvolvo interfaces simples, rápidas e bem pensadas.
+        Gosto de transformar ideias em produtos claros — com atenção aos detalhes.
+      </p>
+      <div class="hero__actions reveal">
+        <a class="btn btn--solid" href="#projetos">Ver projetos <span aria-hidden="true">↓</span></a>
+        <a class="btn btn--ghost" href="#contato">Falar comigo</a>
+      </div>
+      <div class="hero__meta reveal">
+        <span>São Paulo, BR</span>
+        <span id="clock" aria-label="Horário local">--:--</span>
+        <span class="status"><i aria-hidden="true"></i> Disponível para novos projetos</span>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="section" id="sobre">
+      <header class="section__head reveal">
+        <span class="section__num">01</span>
+        <h2 class="section__title">Sobre</h2>
+      </header>
+      <div class="about reveal">
+        <p class="about__big">
+          Estudo e construo para a web com foco em <em>clareza</em>, desempenho e acessibilidade.
+        </p>
+        <div class="about__text">
+          <p>
+            Escreva aqui um parágrafo curto sobre você: sua formação, o que está aprendendo e
+            o tipo de trabalho que mais te anima. Duas ou três frases bastam.
+          </p>
+          <p>
+            Fora do código, conte algo pessoal que te represente — um hobby, um interesse,
+            algo que ajude as pessoas a lembrarem de você.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section class="section" id="projetos">
+      <header class="section__head reveal">
+        <span class="section__num">02</span>
+        <h2 class="section__title">Projetos selecionados</h2>
+      </header>
+      <ol class="projects" id="projectList" aria-live="polite"></ol>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section class="section" id="habilidades">
+      <header class="section__head reveal">
+        <span class="section__num">03</span>
+        <h2 class="section__title">Habilidades</h2>
+      </header>
+      <div class="skills reveal" id="skillList"></div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="section contact" id="contato">
+      <header class="section__head reveal">
+        <span class="section__num">04</span>
+        <h2 class="section__title">Contato</h2>
+      </header>
+      <p class="contact__big reveal">
+        Vamos construir<br>algo <em>juntos?</em>
+      </p>
+      <a class="contact__mail reveal" href="mailto:seuemail@exemplo.com" id="mailLink">seuemail@exemplo.com</a>
+      <ul class="contact__links reveal">
+        <li><a href="https://github.com/nandagvenda" target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href="https://www.linkedin.com/in/seu-usuario" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="#" target="_blank" rel="noopener">Currículo ↗</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year2">2026</span> Seu Nome</span>
+    <a href="#topo">Voltar ao topo ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
